@@ -1,3 +1,3 @@
 module.exports = () => {
-  console.log('ets');
+  console.log('build');
 }

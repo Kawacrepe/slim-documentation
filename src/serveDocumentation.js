@@ -1,11 +1,27 @@
 const fs = require('fs');
 const { join } = require('path');
+const marked = require('marked');
+
+const docs = join(__dirname, '../docs');
 const fileName = join(__dirname, '../public/index.html');
-const stream = fs.createWriteStream(fileName);
+
+async function iteratorDoc(path) {
+  const dir = await fs.promises.opendir(path);
+  for await(const dirent of dir) {
+    const currentFolder = join(`${path}/${dirent.name}`);
+
+    const content = fs.readFileSync(currentFolder, 'utf8');
+    console.log(marked(content));
+    return marked(content);
+  }
+}
 
 function buildHtml(req) {
   const header = '';
-  const body = 'test';
+
+  // iterate over doc
+
+  const body = iteratorDoc(docs);
 
   return '<!DOCTYPE html>'
        + '<html><head>' + header + '</head><body>' + body + '</body></html>';

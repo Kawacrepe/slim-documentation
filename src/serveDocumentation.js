@@ -7,29 +7,28 @@ const fileName = join(__dirname, '../public/index.html');
 
 async function iteratorDoc(path) {
   const dir = await fs.promises.opendir(path);
-  for await(const dirent of dir) {
-    const currentFolder = join(`${path}/${dirent.name}`);
 
+  for await(const dirent of dir) {
+    
+    const currentFolder = join(`${path}/${dirent.name}`);
     const content = fs.readFileSync(currentFolder, 'utf8');
-    console.log(marked(content));
+
     return marked(content);
   }
 }
 
-function buildHtml(req) {
+async function buildHtml(req) {
   const header = '';
 
-  // iterate over doc
-
-  const body = iteratorDoc(docs);
+  const body = await iteratorDoc(docs);
 
   return '<!DOCTYPE html>'
        + '<html><head>' + header + '</head><body>' + body + '</body></html>';
 };
 
-module.exports = (res) => {
+module.exports = async (res) => {
 
-  const html = buildHtml();
+  const html = await buildHtml();
 
   res.writeHead(200, {
     'Content-Type': 'text/html',

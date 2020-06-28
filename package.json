@@ -5,6 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./src/index",
+    "dev": "nodemon ./src/index",
     "test": "yarn test"
   },
   "keywords": [
@@ -14,9 +15,14 @@
   "author": "Kawacrepe",
   "license": "ISC",
   "dependencies": {
-    "@slimio/manifest": "^0.9.1",
     "dotenv": "^8.2.0",
-    "marked": "^1.1.0",
-    "polka": "^1.0.0-next.11"
+    "httpie": "^1.1.2",
+    "markdown-it": "^11.0.0",
+    "polka": "^1.0.0-next.11",
+    "@polka/send-type": "latest",
+    "serve-static": "^1.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

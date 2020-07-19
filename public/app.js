@@ -1,4 +1,5 @@
 const app = document.querySelector('#app');
+
 fetch('http://localhost:3333/html')
 	.then((res) => {
 		return res.json();

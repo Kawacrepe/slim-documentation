@@ -1,5 +1,12 @@
 [
   {
+    "nav": "Navbar",
+    "childrens": [
+      "First",
+      "Second"
+    ]
+  },
+  {
     "name": "Name",
     "url": "Url"
   }

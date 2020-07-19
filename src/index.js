@@ -16,5 +16,5 @@ polka()
   })
   .listen(PORT, err => {
     if (err) throw err;
-    console.log(`> Running on localhost:${PORT}`);
+    console.log(`> Running on https://localhost:${PORT}`);
   });
